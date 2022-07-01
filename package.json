@@ -1,332 +1,332 @@
 {
-	"name": "vscode-elrond-ide",
-	"displayName": "Elrond IDE",
-	"description": "Elrond IDE for developing Smart Contracts",
-	"version": "0.12.0",
-	"publisher": "Elrond",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ElrondNetwork/elrond-ide-vscode.git"
-	},
-	"engines": {
-		"vscode": "^1.64.0"
-	},
-	"categories": [
-		"Programming Languages",
-		"Extension Packs",
-		"Debuggers",
-		"Other"
-	],
-	"icon": "content/logo.png",
-	"activationEvents": [
-		"onCommand:elrond.setupWorkspace",
-		"workspaceContains:**/elrond.workspace.json"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "elrond.setupWorkspace",
-				"title": "Setup Workspace",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.installSdk",
-				"title": "Install SDK",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.installSdkModule",
-				"title": "Install Module or Dependency",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.refreshTemplates",
-				"title": "Refresh",
-				"category": "Elrond",
-				"icon": {
-					"light": "content/light/refresh.svg",
-					"dark": "content/dark/refresh.svg"
-				}
-			},
-			{
-				"command": "elrond.newFromTemplate",
-				"title": "New Contract",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.refreshContracts",
-				"title": "Refresh",
-				"category": "Elrond",
-				"icon": {
-					"light": "content/light/refresh.svg",
-					"dark": "content/dark/refresh.svg"
-				}
-			},
-			{
-				"command": "elrond.buildContract",
-				"title": "Build Contract",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.cleanContract",
-				"title": "Clean Contract",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.runContractSnippet",
-				"title": "Run Contract Snippet",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.runMandosTests",
-				"title": "Run Mandos Tests",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.gotoContract",
-				"title": "Show in Workspace Explorer",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.runFreshTestnet",
-				"title": "Start Fresh Testnet",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.resumeExistingTestnet",
-				"title": "Resume Testnet",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.stopTestnet",
-				"title": "Stop Testnet",
-				"category": "Elrond"
-			},
-			{
-				"command": "elrond.setupErdjsSnippets",
-				"title": "Setup erdjs-snippets",
-				"category": "Elrond"
-			}
-		],
-		"menus": {
-			"explorer/context": [
-				{
-					"command": "elrond.buildContract",
-					"when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets && resourceFilename != interaction",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.buildContract",
-					"when": "resourceFilename == elrond.json",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.cleanContract",
-					"when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets && resourceFilename != interaction",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.cleanContract",
-					"when": "resourceFilename == elrond.json",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.runContractSnippet",
-					"when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.runContractSnippet",
-					"when": "resourceFilename == elrond.json",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.runMandosTests",
-					"when": "resourceFilename =~ /.scen.json/",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.runMandosTests",
-					"when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets && resourceFilename != interaction",
-					"group": "Elrond"
-				},
-				{
-					"command": "elrond.runFreshTestnet",
-					"when": "resourceFilename == testnet.toml",
-					"group": "Elrond Testnet"
-				},
-				{
-					"command": "elrond.resumeExistingTestnet",
-					"when": "resourceFilename == testnet.toml",
-					"group": "Elrond Testnet"
-				},
-				{
-					"command": "elrond.stopTestnet",
-					"when": "resourceFilename == testnet.toml",
-					"group": "Elrond Testnet"
-				}
-			],
-			"commandPalette": [
-				{
-					"command": "elrond.refreshContracts",
-					"when": "false"
-				},
-				{
-					"command": "elrond.refreshTemplates",
-					"when": "false"
-				},
-				{
-					"command": "elrond.newFromTemplate",
-					"when": "false"
-				},
-				{
-					"command": "elrond.buildContract",
-					"when": "false"
-				},
-				{
-					"command": "elrond.cleanContract",
-					"when": "false"
-				},
-				{
-					"command": "elrond.runContractSnippet",
-					"when": "false"
-				},
-				{
-					"command": "elrond.runMandosTests",
-					"when": "false"
-				},
-				{
-					"command": "elrond.gotoContract",
-					"when": "false"
-				},
-				{
-					"command": "elrond.runFreshTestnet",
-					"when": "false"
-				},
-				{
-					"command": "elrond.resumeExistingTestnet",
-					"when": "false"
-				},
-				{
-					"command": "elrond.stopTestnet",
-					"when": "false"
-				}
-			],
-			"editor/context": [],
-			"view/title": [
-				{
-					"command": "elrond.refreshTemplates",
-					"when": "view == contractTemplates",
-					"group": "navigation"
-				},
-				{
-					"command": "elrond.refreshContracts",
-					"when": "view == smartContracts",
-					"group": "navigation"
-				}
-			],
-			"view/item/context": [
-				{
-					"command": "elrond.buildContract",
-					"when": "view == smartContracts && viewItem == contract"
-				},
-				{
-					"command": "elrond.cleanContract",
-					"when": "view == smartContracts && viewItem == contract"
-				},
-				{
-					"command": "elrond.runContractSnippet",
-					"when": "view == smartContracts && viewItem == contract"
-				},
-				{
-					"command": "elrond.runMandosTests",
-					"when": "view == smartContracts && viewItem == contract"
-				},
-				{
-					"command": "elrond.gotoContract",
-					"when": "view == smartContracts && viewItem == contract"
-				},
-				{
-					"command": "elrond.newFromTemplate",
-					"when": "view == contractTemplates",
-					"group": "inline"
-				}
-			]
-		},
-		"configuration": {
-			"title": "vscode-elrond-ide",
-			"properties": {
-				"elrond.elrondsdk": {
-					"type": "string",
-					"default": "~/elrondsdk"
-				}
-			}
-		},
-		"viewsContainers": {
-			"activitybar": [
-				{
-					"id": "elrond",
-					"title": "Elrond Workspace Explorer",
-					"icon": "content/logo.png"
-				}
-			]
-		},
-		"views": {
-			"elrond": [
-				{
-					"id": "smartContracts",
-					"name": "Smart Contracts",
-					"contextualTitle": "Smart Contracts in Workspace"
-				},
-				{
-					"id": "contractTemplates",
-					"name": "Templates",
-					"contextualTitle": "Smart Contract Templates"
-				}
-			]
-		},
-		"viewsWelcome": [
-			{
-				"view": "contractTemplates",
-				"contents": "Hit the refresh button to fetch or update the available Smart Contract templates."
-			},
-			{
-				"view": "smartContracts",
-				"contents": "Hit the refresh button to update the list of Smart Contracts within your workspace."
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"package": "vsce package",
-		"deploy": "vsce publish",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "npm run compile",
-		"test": "node ./out/test/runTest.js",
-		"unit-tests": "mocha",
-		"lint": "tslint --project ."
-	},
-	"devDependencies": {
-		"@types/chai": "4.2.11",
-		"@types/glob": "^7.1.3",
-		"@types/mocha": "9.1.0",
-		"@types/node": "13.13.2",
-		"@types/underscore": "^1.10.1",
-		"@types/vscode": "1.64.0",
-		"chai": "4.2.0",
-		"mocha": "9.2.1",
-		"ts-node": "9.1.1",
-		"tslint": "6.1.3",
-		"typescript": "^4.4.4",
-		"vsce": "2.6.7"
-	},
-	"dependencies": {
-		"glob": "^7.1.6",
-		"ps-list": "^7.2.0",
-		"underscore": "^1.12.1",
-		"axios": "0.24.0"
-	},
-	"extensionDependencies": []
+  "name": "vscode-elrond-ide-fork-nvergez",
+  "displayName": "Elrond IDE Fork nvergez",
+  "description": "Elrond IDE for developing Smart Contracts (fork)",
+  "version": "0.12.0",
+  "publisher": "nvergez",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nvergez/elrond-ide-vscode.git"
+  },
+  "engines": {
+    "vscode": "^1.64.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Extension Packs",
+    "Debuggers",
+    "Other"
+  ],
+  "icon": "content/logo.png",
+  "activationEvents": [
+    "onCommand:elrond.setupWorkspace",
+    "workspaceContains:**/elrond.workspace.json"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "elrond.setupWorkspace",
+        "title": "Setup Workspace",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.installSdk",
+        "title": "Install SDK",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.installSdkModule",
+        "title": "Install Module or Dependency",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.refreshTemplates",
+        "title": "Refresh",
+        "category": "Elrond",
+        "icon": {
+          "light": "content/light/refresh.svg",
+          "dark": "content/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "elrond.newFromTemplate",
+        "title": "New Contract",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.refreshContracts",
+        "title": "Refresh",
+        "category": "Elrond",
+        "icon": {
+          "light": "content/light/refresh.svg",
+          "dark": "content/dark/refresh.svg"
+        }
+      },
+      {
+        "command": "elrond.buildContract",
+        "title": "Build Contract",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.cleanContract",
+        "title": "Clean Contract",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.runContractSnippet",
+        "title": "Run Contract Snippet",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.runMandosTests",
+        "title": "Run Mandos Tests",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.gotoContract",
+        "title": "Show in Workspace Explorer",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.runFreshTestnet",
+        "title": "Start Fresh Testnet",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.resumeExistingTestnet",
+        "title": "Resume Testnet",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.stopTestnet",
+        "title": "Stop Testnet",
+        "category": "Elrond"
+      },
+      {
+        "command": "elrond.setupErdjsSnippets",
+        "title": "Setup erdjs-snippets",
+        "category": "Elrond"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "elrond.buildContract",
+          "when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets && resourceFilename != interaction",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.buildContract",
+          "when": "resourceFilename == elrond.json",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.cleanContract",
+          "when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets && resourceFilename != interaction",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.cleanContract",
+          "when": "resourceFilename == elrond.json",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.runContractSnippet",
+          "when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.runContractSnippet",
+          "when": "resourceFilename == elrond.json",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.runMandosTests",
+          "when": "resourceFilename =~ /.scen.json/",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.runMandosTests",
+          "when": "explorerResourceIsFolder && resourceFilename != output && resourceFilename != debug && resourceFilename != target && resourceFilename != erdjs-snippets && resourceFilename != interaction",
+          "group": "Elrond"
+        },
+        {
+          "command": "elrond.runFreshTestnet",
+          "when": "resourceFilename == testnet.toml",
+          "group": "Elrond Testnet"
+        },
+        {
+          "command": "elrond.resumeExistingTestnet",
+          "when": "resourceFilename == testnet.toml",
+          "group": "Elrond Testnet"
+        },
+        {
+          "command": "elrond.stopTestnet",
+          "when": "resourceFilename == testnet.toml",
+          "group": "Elrond Testnet"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "elrond.refreshContracts",
+          "when": "false"
+        },
+        {
+          "command": "elrond.refreshTemplates",
+          "when": "false"
+        },
+        {
+          "command": "elrond.newFromTemplate",
+          "when": "false"
+        },
+        {
+          "command": "elrond.buildContract",
+          "when": "false"
+        },
+        {
+          "command": "elrond.cleanContract",
+          "when": "false"
+        },
+        {
+          "command": "elrond.runContractSnippet",
+          "when": "false"
+        },
+        {
+          "command": "elrond.runMandosTests",
+          "when": "false"
+        },
+        {
+          "command": "elrond.gotoContract",
+          "when": "false"
+        },
+        {
+          "command": "elrond.runFreshTestnet",
+          "when": "false"
+        },
+        {
+          "command": "elrond.resumeExistingTestnet",
+          "when": "false"
+        },
+        {
+          "command": "elrond.stopTestnet",
+          "when": "false"
+        }
+      ],
+      "editor/context": [],
+      "view/title": [
+        {
+          "command": "elrond.refreshTemplates",
+          "when": "view == contractTemplates",
+          "group": "navigation"
+        },
+        {
+          "command": "elrond.refreshContracts",
+          "when": "view == smartContracts",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "elrond.buildContract",
+          "when": "view == smartContracts && viewItem == contract"
+        },
+        {
+          "command": "elrond.cleanContract",
+          "when": "view == smartContracts && viewItem == contract"
+        },
+        {
+          "command": "elrond.runContractSnippet",
+          "when": "view == smartContracts && viewItem == contract"
+        },
+        {
+          "command": "elrond.runMandosTests",
+          "when": "view == smartContracts && viewItem == contract"
+        },
+        {
+          "command": "elrond.gotoContract",
+          "when": "view == smartContracts && viewItem == contract"
+        },
+        {
+          "command": "elrond.newFromTemplate",
+          "when": "view == contractTemplates",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "vscode-elrond-ide",
+      "properties": {
+        "elrond.elrondsdk": {
+          "type": "string",
+          "default": "~/elrondsdk"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "elrond",
+          "title": "Elrond Workspace Explorer",
+          "icon": "content/logo.png"
+        }
+      ]
+    },
+    "views": {
+      "elrond": [
+        {
+          "id": "smartContracts",
+          "name": "Smart Contracts",
+          "contextualTitle": "Smart Contracts in Workspace"
+        },
+        {
+          "id": "contractTemplates",
+          "name": "Templates",
+          "contextualTitle": "Smart Contract Templates"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "contractTemplates",
+        "contents": "Hit the refresh button to fetch or update the available Smart Contract templates."
+      },
+      {
+        "view": "smartContracts",
+        "contents": "Hit the refresh button to update the list of Smart Contracts within your workspace."
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "package": "vsce package",
+    "deploy": "vsce publish",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js",
+    "unit-tests": "mocha",
+    "lint": "tslint --project ."
+  },
+  "devDependencies": {
+    "@types/chai": "4.2.11",
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "9.1.0",
+    "@types/node": "13.13.2",
+    "@types/underscore": "^1.10.1",
+    "@types/vscode": "1.64.0",
+    "chai": "4.2.0",
+    "mocha": "9.2.1",
+    "ts-node": "9.1.1",
+    "tslint": "6.1.3",
+    "typescript": "^4.4.4",
+    "vsce": "2.6.7"
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "ps-list": "^7.2.0",
+    "underscore": "^1.12.1",
+    "axios": "0.24.0"
+  },
+  "extensionDependencies": []
 }
